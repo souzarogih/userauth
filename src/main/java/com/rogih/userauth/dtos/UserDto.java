@@ -2,6 +2,7 @@ package com.rogih.userauth.dtos;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.rogih.userauth.validation.UsernameConstraint;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -23,22 +24,23 @@ public class UserDto {
     private UUID userId;
 
     @NotBlank(groups = UserView.RegistrationPost.class)
-    @Size(min = 4, max = 50)
+    @Size(min = 4, max = 50, groups = UserView.RegistrationPost.class)
     @JsonView(UserView.RegistrationPost.class)
+    @UsernameConstraint(groups = UserView.RegistrationPost.class)
     private String username;
 
     @NotBlank(groups = UserView.RegistrationPost.class)
-    @Email
+    @Email(groups = UserView.RegistrationPost.class)
     @JsonView(UserView.RegistrationPost.class)
     private String email;
 
-    @Size(min = 6, max = 20)
     @NotBlank(groups = {UserView.RegistrationPost.class, UserView.PasswordPut.class})
+    @Size(min = 6, max = 20, groups = {UserView.RegistrationPost.class, UserView.PasswordPut.class})
     @JsonView({UserView.RegistrationPost.class, UserView.PasswordPut.class})
     private String password;
 
-    @Size(min = 6, max = 20)
     @NotBlank(groups = UserView.PasswordPut.class)
+    @Size(min = 6, max = 20, groups = UserView.PasswordPut.class)
     @JsonView(UserView.PasswordPut.class)
     private String oldPassword;
 
