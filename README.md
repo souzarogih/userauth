@@ -10,7 +10,7 @@
 
 ![Badge](https://img.shields.io/badge/Java-SpringBoot-%237159c1?style=for-the-badge&logo=ghost)
 
-[![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/souzarogih/...)
+[![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/souzarogih/userauth.git)
 
 [//]: # (## DevBook Api)
 
@@ -22,7 +22,7 @@
 
 ## Fazer o clone do repositório
 
-`$ git clone https://github.com/souzarogih/...`
+`$ git clone https://github.com/souzarogih/userauth.git`
 
 ### Rotas
 - [x] PUT /users/{user_id}
