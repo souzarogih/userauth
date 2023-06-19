@@ -3,11 +3,14 @@ package com.rogih.userauth.dtos;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.rogih.userauth.validation.UsernameConstraint;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+//import jakarta.validation.constraints.Email;
+//import jakarta.validation.constraints.NotBlank;
+//import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.UUID;
 
 @Data

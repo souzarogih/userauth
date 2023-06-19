@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.rogih.userauth.enums.UserStatus;
 import com.rogih.userauth.enums.UserType;
-import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.hateoas.RepresentationModel;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -45,10 +45,10 @@ public class UserModel extends RepresentationModel<UserModel> implements Seriali
     @Column
     private String imageUrl;
     @Column(nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-YYYY HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
     private LocalDateTime creationDate;
     @Column(nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-YYYY HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
     private LocalDateTime lastUpdateDate;
 
 }
