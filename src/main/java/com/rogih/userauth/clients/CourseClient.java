@@ -49,4 +49,10 @@ public class CourseClient {
         log.info("Search= {} ", searchResult);
         return new PageImpl<>(searchResult);
     }
+
+    public void deleteUserInCourse(UUID userId) {
+        log.info("Enviando a requisição de deleção do usuário {} para o serviço de Course em {}.", userId, REQUEST_URL_COURSE);
+        String url = REQUEST_URL_COURSE + "/courses/users/" + userId;
+        restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);
+    }
 }

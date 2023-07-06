@@ -20,3 +20,7 @@ All notable changes to this project will be documented in this file. This change
 ## [1.0.4] 2023-06-29
 ### Added
 - #1210 | Adicionando predicate para receber requisições da api-gateway
+
+## [1.0.5] 2023-07-06
+### Added
+- #1221 | Implementação do método que envia requisição para o serviço Course deletar um usuário.

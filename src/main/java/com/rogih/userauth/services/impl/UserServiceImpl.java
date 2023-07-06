@@ -1,5 +1,6 @@
 package com.rogih.userauth.services.impl;
 
+import com.rogih.userauth.clients.CourseClient;
 import com.rogih.userauth.models.UserCourseModel;
 import com.rogih.userauth.models.UserModel;
 import com.rogih.userauth.repositories.UserCourseRepository;
@@ -27,6 +28,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserCourseRepository userCourseRepository;
 
+    @Autowired
+    CourseClient courseClient;
 
     @Override
     public List<UserModel> findAll() {
@@ -41,13 +44,18 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void delete(UserModel userModel) {
-        log.info("Processando a deleção de um usuário");
+        log.info("Processando a deleção de um usuário {} ", userModel.getUserId());
+        boolean deleteUserCourseInCourse = false;
         List<UserCourseModel> userCourseModelList = userCourseRepository.findAllUserCourseIntoUser(userModel.getUserId());
         if(!userCourseModelList.isEmpty()){
             userCourseRepository.deleteAll(userCourseModelList);
+            deleteUserCourseInCourse = true;
             log.info("Deletando a lista de cursos associada ao usuário: {}", userCourseModelList);
         }
         userRepository.delete(userModel);
+        if(deleteUserCourseInCourse){
+            courseClient.deleteUserInCourse(userModel.getUserId());
+        }
         log.info("Usuário {} deletado com sucesso.", userModel.getUserId());
     }
 
